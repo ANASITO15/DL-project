@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>IoT Digital Twin IDS</title>
+</head>
+<body>
+    <h1>IoT Digital Twin Intrusion Detection</h1>
+    <form action="/predict" method="post">
+        {% for col in feature_cols %}
+            <div>
+                <label>{{ col }}:</label>
+                <input type="text" name="{{ col }}" required>
+            </div>
+        {% endfor %}
+        <button type="submit">Predict</button>
+    </form>
+</body>
+</html>
