@@ -3,27 +3,41 @@
 <head>
     <meta charset="utf-8">
     <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Prediction Result</h1>
+    <div class="container">
+        <h1>Prediction Result</h1>
 
-    <h3>Input features</h3>
-    <ul>
-        {% for k, v in input_data.items() %}
-            <li><strong>{{ k }}</strong>: {{ v }}</li>
-        {% endfor %}
-    </ul>
+        <h3>Input features</h3>
+        <ul>
+            {% for k, v in input_data.items() %}
+                <li><strong>{{ k }}</strong>: {{ v }}</li>
+            {% endfor %}
+        </ul>
 
-    <h3>Binary label prediction</h3>
-    <p>Predicted class: <strong>{{ label_pred }}</strong></p>
-    <p>Confidence: {{ label_conf }}</p>
+        <div class="result-block">
+            <h3>Binary label prediction</h3>
+            <p>
+                Predicted class:
+                {% if label_pred == "Attack" %}
+                    <span class="result-label-attack">{{ label_pred }}</span>
+                {% else %}
+                    <span class="result-label-normal">{{ label_pred }}</span>
+                {% endif %}
+            </p>
+            <p>Confidence: {{ label_conf }}</p>
+        </div>
 
-    
-    <h3>Attack type prediction</h3>
-    <p>Predicted type: <strong>{{ attack_pred }}</strong></p>
-    <p>Confidence: {{ attack_conf }}</p>
-    
+        <div class="result-block">
+            <h3>Attack type prediction</h3>
+            <p>Predicted type: <strong>{{ attack_pred }}</strong></p>
+            <p>Confidence: {{ attack_conf }}</p>
+        </div>
 
-    <a href="/">Back</a>
+        <p style="margin-top: 16px;">
+            <a href="/" class="btn">Back</a>
+        </p>
+    </div>
 </body>
 </html>

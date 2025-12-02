@@ -3,17 +3,22 @@
 <head>
     <meta charset="utf-8">
     <title>IoT Digital Twin IDS</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>IoT Digital Twin Intrusion Detection</h1>
-    <form action="/predict" method="post">
-        {% for col in feature_cols %}
-            <div>
-                <label>{{ col }}:</label>
-                <input type="text" name="{{ col }}" required>
-            </div>
-        {% endfor %}
-        <button type="submit">Predict</button>
-    </form>
+    <div class="container">
+        <h1>IoT Digital Twin Intrusion Detection</h1>
+        <p><small>Enter feature values to classify traffic as normal or attack and predict attack type.</small></p>
+
+        <form action="/predict" method="post">
+            {% for col in feature_cols %}
+                <div class="form-row">
+                    <label for="{{ col }}">{{ col }}</label>
+                    <input type="text" id="{{ col }}" name="{{ col }}" required>
+                </div>
+            {% endfor %}
+            <button type="submit">Predict</button>
+        </form>
+    </div>
 </body>
 </html>
