@@ -51,7 +51,7 @@ def predict():
     label_text = "Attack" if y_label_pred == 1 else "Normal"
     label_conf = float(np.max(y_label_proba))
 
-    # Optional multi-class prediction
+    # multi-class prediction
     y_attack_pred = attack_pipeline.predict(X_input)[0]
     y_attack_proba = attack_pipeline.predict_proba(X_input)[0]
     attack_conf = float(np.max(y_attack_proba))
